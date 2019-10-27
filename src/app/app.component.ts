@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-code';
+  htmlContent: string;
+  constructor(private view: ViewContainerRef){
+    setTimeout(() => this.htmlContent = (view.element.nativeElement as HTMLElement).innerHTML);
+  }
 }
